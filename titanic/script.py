@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 
-df = pd.read_csv('./data/train.csv')
+df = pd.read_csv('./train.csv')
 df = df.drop(['Cabin', 'Name', 'Ticket'], axis = 1)
 
 # fill na
@@ -28,7 +28,7 @@ model = RandomForestClassifier(n_estimators = 100)
 model = model.fit(train_data[:, 2:], train_data[:, 0])
 
 # similar data processing as training data
-df_test = pd.read_csv('./data/test.csv')
+df_test = pd.read_csv('./test.csv')
 df_test = df_test.drop(['Name', 'Ticket', 'Cabin'], axis = 1)
 
 df_test['Age'] = df_test['Age'].fillna(df_test['Age'].mean())
